@@ -1,4 +1,4 @@
-# ChatLingo
+# ChatLingo [UA]
 
 Додаток для перекладу чату в реальному часі для World of Warcraft 3.3.5/3.3.5a
 
@@ -85,7 +85,7 @@ ChatLingo-AddOn/
 │   ├── GUI/
 │   │   ├── Config.lua
 │   │   └── ChatFrame.lua
-│   ├── Libs/                       # Ace3 framework бібліотеки (включені для автономної роботи)
+│   ├── Libs/                       # Мінімальні бібліотеки
 │   ├── Locales/
 │   │   ├── enUS.lua
 │   │   └── ukUA.lua
@@ -129,7 +129,8 @@ MIT Ліцензія - дивіться файл [LICENSE](LICENSE)
 
 ## 🐛 Проблеми
 
-Знайшли баг? [Створіть issue](https://github.com/yourusername/ChatLingo/issues)
+- Виправлено конфлікти з іншими аддонами, шляхом мінімізації ініціалізації
+- Знайшли баг? [Створіть issue](https://github.com/yourusername/ChatLingo/issues)
 
 ## ⭐ Підтримка
 

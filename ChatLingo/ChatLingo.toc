@@ -1,24 +1,12 @@
 ## Interface: 30300
-## Title: ChatLingo
+## Title: ChatLingo [UA] 0.1.0
 ## Notes: Real-time chat translation
 ## Author: Groomsha (Ihor Cheberiak)
 ## Version: 0.1.0
-## SavedVariables: ChatLingoData
+## SavedVariables: ChatLingoAddonData
 
 Libs\LibStub\LibStub.lua
-Libs\AceAddon-3.0\AceAddon-3.0.lua
-Libs\AceEvent-3.0\AceEvent-3.0.lua
-Libs\AceDB-3.0\AceDB-3.0.lua
-Libs\AceGUI-3.0\AceGUI-3.0.lua
-Libs\AceConfig-3.0\AceConfig-3.0.lua
-Libs\AceLocale-3.0\AceLocale-3.0.lua
 
 ChatLingo.lua
 Locales\enUS.lua
 Locales\ukUA.lua
-Core\Core.lua
-Core\Events.lua
-Core\MessageHandler.lua
-Core\Display.lua
-GUI\Config.lua
-GUI\ChatFrame.lua

@@ -1,25 +1,33 @@
 -- Author: Groomsha (Ihor Cheberiak)
 
-local AceAddon = LibStub("AceAddon-3.0")
-local ChatLingo = AceAddon:NewAddon("ChatLingo", "AceEvent-3.0", "AceLocale-3.0")
-
-function ChatLingo:OnInitialize()
+-- Simple addon initialization without AceAddon to avoid conflicts
+local function OnInitialize()
     -- Initialize SavedVariables
-    if not ChatLingoData then
-        ChatLingoData = {}
+    if not ChatLingoAddonData then
+        ChatLingoAddonData = {
+            settings = {},
+            pendingMessages = {},
+            translatedMessages = {},
+            excludeList = {}
+        }
+    else
+        -- Ensure all fields exist
+        ChatLingoAddonData.settings = ChatLingoAddonData.settings or {}
+        ChatLingoAddonData.pendingMessages = ChatLingoAddonData.pendingMessages or {}
+        ChatLingoAddonData.translatedMessages = ChatLingoAddonData.translatedMessages or {}
+        ChatLingoAddonData.excludeList = ChatLingoAddonData.excludeList or {}
     end
 
-    -- Get locale
-    local L = self.L
-
     -- Print load message
-    print(L["Loaded"])
+    -- print("ChatLingo loaded!")  -- Disabled to avoid conflicts
 end
 
-function ChatLingo:OnEnable()
-    -- Registration of events can be done here
-end
-
-function ChatLingo:OnDisable()
-    -- Cleanup if needed
-end
+-- Register the initialization function
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("ADDON_LOADED")
+frame:SetScript("OnEvent", function(self, event, addonName)
+    if addonName == "ChatLingo" then
+        OnInitialize()
+        self:UnregisterEvent("ADDON_LOADED")
+    end
+end)
