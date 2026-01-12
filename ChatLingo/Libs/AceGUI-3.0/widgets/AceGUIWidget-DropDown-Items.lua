@@ -1,8 +1,6 @@
---[[ $Id: AceGUIWidget-DropDown-Items.lua 1137 2016-05-15 10:57:36Z nevcairiel $ ]]--
+--[[ $Id: AceGUIWidget-DropDown-Items.lua 916 2010-03-15 12:24:36Z nevcairiel $ ]]--
 
 local AceGUI = LibStub("AceGUI-3.0")
-
-local IsLegion = select(4, GetBuildInfo()) >= 70000
 
 -- Lua APIs
 local select, assert = select, assert
@@ -215,12 +213,6 @@ function ItemBase.Create(type)
 	self.SetOnEnter = ItemBase.SetOnEnter
 	
 	return self
-end
-
--- Register a dummy LibStub library to retrieve the ItemBase, so other addons can use it.
-local IBLib = LibStub:NewLibrary("AceGUI-3.0-DropDown-ItemBase", ItemBase.version)
-if IBLib then
-	IBLib.GetItemBase = function() return ItemBase end
 end
 
 --[[
@@ -442,7 +434,7 @@ end
 -- A single line to separate items
 do
 	local widgetType = "Dropdown-Item-Separator"
-	local widgetVersion = 2
+	local widgetVersion = 1
 	
 	-- exported, override
 	local function SetDisabled(self, disabled)
@@ -457,11 +449,7 @@ do
 		
 		local line = self.frame:CreateTexture(nil, "OVERLAY")
 		line:SetHeight(1)
-		if IsLegion then
-			line:SetColorTexture(.5, .5, .5)
-		else
-			line:SetTexture(.5, .5, .5)
-		end
+		line:SetTexture(.5, .5, .5)
 		line:SetPoint("LEFT", self.frame, "LEFT", 10, 0)
 		line:SetPoint("RIGHT", self.frame, "RIGHT", -10, 0)
 		

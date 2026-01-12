@@ -8,8 +8,8 @@
 -- :IterateOptionsTables() (and :GetOptionsTable() if only given one argument) return a function reference that the requesting config handling addon must call with valid "uiType", "uiName".
 -- @class file
 -- @name AceConfigRegistry-3.0
--- @release $Id: AceConfigRegistry-3.0.lua 1139 2016-07-03 07:43:51Z nevcairiel $
-local MAJOR, MINOR = "AceConfigRegistry-3.0", 16
+-- @release $Id: AceConfigRegistry-3.0.lua 921 2010-05-09 15:49:14Z nevcairiel $
+local MAJOR, MINOR = "AceConfigRegistry-3.0", 12
 local AceConfigRegistry = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfigRegistry then return end
@@ -57,7 +57,6 @@ local istable={["table"]=true,   _="table"}
 local ismethodtable={["table"]=true,["string"]=true,["function"]=true,   _="methodname, funcref or table"}
 local optstring={["nil"]=true,["string"]=true, _="string"}
 local optstringfunc={["nil"]=true,["string"]=true,["function"]=true, _="string or funcref"}
-local optstringnumberfunc={["nil"]=true,["string"]=true,["number"]=true,["function"]=true, _="string, number or funcref"}
 local optnumber={["nil"]=true,["number"]=true, _="number"}
 local optmethod={["nil"]=true,["string"]=true,["function"]=true, _="methodname or funcref"}
 local optmethodfalse={["nil"]=true,["string"]=true,["function"]=true,["boolean"]={[false]=true},  _="methodname, funcref or false"}
@@ -83,7 +82,7 @@ local basekeys={
 		dialogHidden=optmethodbool,
 		dropdownHidden=optmethodbool,
 	cmdHidden=optmethodbool,
-	icon=optstringnumberfunc,
+	icon=optstringfunc,
 	iconCoords=optmethodtable,
 	handler=opttable,
 	get=optmethodfalse,
@@ -96,7 +95,7 @@ local basekeys={
 local typedkeys={
 	header={},
 	description={
-		image=optstringnumberfunc,
+		image=optstringfunc,
 		imageCoords=optmethodtable,
 		imageHeight=optnumber,
 		imageWidth=optnumber,
@@ -113,7 +112,7 @@ local typedkeys={
 		childGroups=optstring,
 	},
 	execute={
-		image=optstringnumberfunc,
+		image=optstringfunc,
 		imageCoords=optmethodtable,
 		imageHeight=optnumber,
 		imageWidth=optnumber,
@@ -128,7 +127,7 @@ local typedkeys={
 	},
 	toggle={
 		tristate=optbool,
-		image=optstringnumberfunc,
+		image=optstringfunc,
 		imageCoords=optmethodtable,
 	},
 	tristate={
@@ -152,7 +151,6 @@ local typedkeys={
 		control=optstring,
 		dialogControl=optstring,
 		dropdownControl=optstring,
-		itemControl=optstring,
 	},
 	multiselect={
 		values=ismethodtable,
@@ -163,7 +161,7 @@ local typedkeys={
 		dropdownControl=optstring,
 	},
 	color={
-		hasAlpha=optmethodbool,
+		hasAlpha=optbool,
 	},
 	keybinding={
 		-- TODO
@@ -289,8 +287,7 @@ end
 -- @param appName The application name as given to `:RegisterOptionsTable()`
 -- @param options The options table, OR a function reference that generates it on demand. \\
 -- See the top of the page for info on arguments passed to such functions.
--- @param skipValidation Skip options table validation (primarily useful for extremely huge options, with a noticeable slowdown)
-function AceConfigRegistry:RegisterOptionsTable(appName, options, skipValidation)
+function AceConfigRegistry:RegisterOptionsTable(appName, options)
 	if type(options)=="table" then
 		if options.type~="group" then	-- quick sanity checker
 			error(MAJOR..": RegisterOptionsTable(appName, options): 'options' - missing type='group' member in root group", 2)
@@ -298,7 +295,7 @@ function AceConfigRegistry:RegisterOptionsTable(appName, options, skipValidation
 		AceConfigRegistry.tables[appName] = function(uiType, uiName, errlvl)
 			errlvl=(errlvl or 0)+1
 			validateGetterArgs(uiType, uiName, errlvl)
-			if not AceConfigRegistry.validated[uiType][appName] and not skipValidation then
+			if not AceConfigRegistry.validated[uiType][appName] then
 				AceConfigRegistry:ValidateOptionsTable(options, appName, errlvl)	-- upgradable
 				AceConfigRegistry.validated[uiType][appName] = true
 			end
@@ -309,7 +306,7 @@ function AceConfigRegistry:RegisterOptionsTable(appName, options, skipValidation
 			errlvl=(errlvl or 0)+1
 			validateGetterArgs(uiType, uiName, errlvl)
 			local tab = assert(options(uiType, uiName, appName))
-			if not AceConfigRegistry.validated[uiType][appName] and not skipValidation then
+			if not AceConfigRegistry.validated[uiType][appName] then
 				AceConfigRegistry:ValidateOptionsTable(tab, appName, errlvl)	-- upgradable
 				AceConfigRegistry.validated[uiType][appName] = true
 			end
