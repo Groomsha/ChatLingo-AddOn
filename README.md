@@ -1,105 +1,141 @@
 # ChatLingo
 
-Real-time chat translation AddOn for World of Warcraft 3.3.5/3.3.5a
+Додаток для перекладу чату в реальному часі для World of Warcraft 3.3.5/3.3.5a
 
 Автоматичний переклад повідомлень у чатах World of Warcraft на льоту.
 
-## ✨ Features
+## ✨ Можливості
 
-- ⚡ Real-time translation of all chat channels
-- 🌍 Multiple translation services (Google Translate, MyMemory, LibreTranslate)
-- 💾 Smart caching system - faster translations
-- 🎯 Priority system (whispers/party/raid first, general chat only when active)
-- 📝 Exclusion list for WoW terms and player names
-- 🖥️ Simple GUI configuration
-- 🆓 100% Free & Open Source
+- ⚡ Переклад у реальному часі всіх каналів чату
+- 🌍 Кілька служб перекладу (Google Translate, MyMemory, LibreTranslate)
+- 💾 Розумна система кешування - швидші переклади
+- 🎯 Система пріоритетів (шепіт/група/рейд першими, загальний чат тільки при активному вікні)
+- 📝 Список виключень для термінів WoW та імен гравців
+- 🖥️ Простий GUI для налаштування
+- 🆓 100% Безкоштовний та Відкритий Джерельний Код
 
-## 🚀 Quick Start
+## 🚀 Швидкий Старт
 
-### Requirements
+### Вимоги
 - World of Warcraft 3.3.5 / 3.3.5a
-- Python 3.8+ 
-- All dependencies included - no pip install needed!
+- Python 3.8+
+- Всі залежності включені - не потрібно pip install!
 
-### Installation
+### Встановлення
 
-1. **Download** latest release
-2. **Extract** archive
-3. **Copy** `ChatLingo` folder to your WoW directory:
+1. **Завантажте** останній реліз
+2. **Розпакуйте** архів
+3. **Скопіюйте** папку `ChatLingo` до директорії WoW:
 ```
    World of Warcraft\Interface\AddOns\
 ```
-4. **Run** `translator\start.bat` (Windows) or `start.sh` (Linux/Mac)
-5. **Configure** WoW path and target language in GUI
-6. **Start** monitoring and play!
+4. **Запустіть** `translator\start.bat` (Windows) або `start.sh` (Linux/Mac)
+5. **Налаштуйте** шлях WoW та цільову мову в GUI
+6. **Почніть** моніторинг та грайте!
 
-## 🎮 Supported Servers
+## 🎮 Підтримувані Сервери
 
-- ✅ Official WoW 3.3.5
+- ✅ Офіційний WoW 3.3.5
 - ✅ Warmane
-- ✅ Any other 3.3.5/3.3.5a private server
+- ✅ Будь-який інший приватний сервер 3.3.5/3.3.5a
 
-## ⚙️ How It Works
+## ⚙️ Як Це Працює
 
-**Hybrid Architecture:**
-- **AddOn** (Lua) - captures chat messages, displays translations in-game
-- **Translator** (Python) - monitors SavedVariables, translates via API, writes back
-- **Communication** - through WoW SavedVariables files
+**Гібридна Архітектура:**
+- **AddOn** (Lua) - захоплює повідомлення чату, відображає переклади в грі
+- **Translator** (Python) - моніторить SavedVariables, перекладає через API, записує назад
+- **Комунікація** - через файли WoW SavedVariables
 
-## 📋 Chat Priority System
+## 📋 Система Пріоритетів Чату
 
-**Always translate (high priority):**
-- Whispers
-- Party chat
-- Raid chat
-- Guild chat
+**Завжди перекладати (високий пріоритет):**
+- Шепіт
+- Груповий чат
+- Рейдовий чат
+- Гільдійний чат
 
-**Translate only active windows (low priority):**
-- Say
-- Yell
-- Custom channels
-- Zone/Trade
+**Перекладати тільки активні вікна (низький пріоритет):**
+- Говорити
+- Кричати
+- Користувацькі канали
+- Зона/Торгівля
 
-## 🔧 Configuration
+## 🔧 Налаштування
 
-Launch translator GUI to configure:
-- Translation service (Google/MyMemory/LibreTranslate/Local DB)
-- Target language (Ukrainian by default)
-- Source language (Auto-detect)
-- API keys (if needed)
-- WoW installation path
+Запустіть GUI перекладача для налаштування:
+- Служба перекладу (Google/MyMemory/LibreTranslate/Локальна БД)
+- Цільова мова (Українська за замовчуванням)
+- Вихідна мова (Автовизначення)
+- API ключі (якщо потрібно)
+- Шлях встановлення WoW
 
-## 📁 Project Structure
+## 📁 Структура Проекту
 ```
-ChatLingo/
-├── ChatLingo/     # WoW AddOn (copy to WoW\Interface\AddOns\)
-└── translator/                     # Python translator
-    ├── lib/                        # All dependencies (included!)
-    ├── modules/                    # Core logic
-    ├── gui/                        # CustomTkinter interface
-    ├── database/                   # SQLite cache
-    └── dictionaries/               # WoW terms & common phrases
+ChatLingo-AddOn/
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── ChatLingo/                       # WoW AddOn (скопіювати до WoW\Interface\AddOns\)
+│   ├── ChatLingo.toc
+│   ├── ChatLingo.lua
+│   ├── Core/
+│   │   ├── Core.lua
+│   │   ├── Events.lua
+│   │   ├── MessageHandler.lua
+│   │   └── Display.lua
+│   ├── GUI/
+│   │   ├── Config.lua
+│   │   └── ChatFrame.lua
+│   ├── Libs/
+│   ├── Locales/
+│   │   ├── enUS.lua
+│   │   └── ukUA.lua
+│   └── Data/
+│       └── Exclusions.lua
+└── Translator/                     # Python перекладач
+    ├── ChatLingoTranslator.py
+    ├── start.bat
+    ├── start.sh
+    ├── config.json
+    ├── requirements.txt
+    ├── lib/                        # Всі залежності (включені!)
+    ├── modules/                    # Основна логіка
+    │   ├── __init__.py
+    │   ├── file_monitor.py
+    │   ├── translator.py
+    │   ├── cache_manager.py
+    │   └── api_services.py
+    ├── gui/                        # Інтерфейс CustomTkinter
+    │   ├── __init__.py
+    │   └── main_window.py
+    ├── database/                   # Кеш SQLite
+    │   └── schema.sql
+    └── dictionaries/               # Терміни WoW та загальні фрази
+        ├── wow_terms_uk.json
+        ├── wow_terms_en.json
+        └── common_phrases.json
 ```
 
-## 🤝 Contributing
+## 🤝 Внесок
 
-Contributions welcome! Please check GitHub issues for details.
+Внесок вітається! Перевірте GitHub issues для деталей.
 
-## 📝 License
+## 📝 Ліцензія
 
-MIT License - see [LICENSE](LICENSE) file
+MIT Ліцензія - дивіться файл [LICENSE](LICENSE)
 
-## 🐛 Issues
+## 🐛 Проблеми
 
-Found a bug? [Open an issue](https://github.com/yourusername/ChatLingo/issues)
+Знайшли баг? [Створіть issue](https://github.com/yourusername/ChatLingo/issues)
 
-## ⭐ Support
+## ⭐ Підтримка
 
-If ChatLingo helps you:
-- ⭐ Star this repo
-- 🐛 Report bugs
-- 💡 Suggest features
+Якщо ChatLingo допомагає вам:
+- ⭐ Зірочка цьому репозиторію
+- 🐛 Повідомляйте про баги
+- 💡 Пропонуйте функції
 
 ---
 
-**Enjoy your multilingual WoW experience!**
+**Насолоджуйтеся багатомовним досвідом WoW!**
