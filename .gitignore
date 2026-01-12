@@ -15,17 +15,17 @@ build/
 *.luac
 
 # Database (створюється автоматично)
-ChatLingoTranslator/database/*.db
-ChatLingoTranslator/database/*.db-journal
-ChatLingoTranslator/database/*.sqlite
-ChatLingoTranslator/database/*.sqlite3
+translator/database/*.db
+translator/database/*.db-journal
+translator/database/*.sqlite
+translator/database/*.sqlite3
 
 # Logs (створюються автоматично)
-ChatLingoTranslator/logs/*.log
+translator/logs/*.log
 *.log
 
 # Config з API ключами користувача
-ChatLingoTranslator/config.json
+translator/config.json
 
 # WoW SavedVariables (тестові)
 *.lua.bak

@@ -25,11 +25,11 @@ Real-time chat translation AddOn for World of Warcraft 3.3.5/3.3.5a
 
 1. **Download** latest release
 2. **Extract** archive
-3. **Copy** `Interface` folder to your WoW directory:
+3. **Copy** `ChatLingo` folder to your WoW directory:
 ```
-   World of Warcraft\Interface\AddOns\ChatLingo\
+   World of Warcraft\Interface\AddOns\
 ```
-4. **Run** `ChatLingoTranslator\start.bat` (Windows) or `start.sh` (Linux/Mac)
+4. **Run** `translator\start.bat` (Windows) or `start.sh` (Linux/Mac)
 5. **Configure** WoW path and target language in GUI
 6. **Start** monitoring and play!
 
@@ -72,7 +72,7 @@ Launch translator GUI to configure:
 ## 📁 Project Structure
 ```
 ChatLingo/
-├── Interface/AddOns/ChatLingo/     # WoW AddOn
+├── ChatLingo/     # WoW AddOn (copy to WoW\Interface\AddOns\)
 └── translator/                     # Python translator
     ├── lib/                        # All dependencies (included!)
     ├── modules/                    # Core logic
@@ -83,7 +83,7 @@ ChatLingo/
 
 ## 🤝 Contributing
 
-Contributions welcome! Please read [DEVELOPMENT.md](docs/DEVELOPMENT.md) for details.
+Contributions welcome! Please check GitHub issues for details.
 
 ## 📝 License
 
