@@ -75,7 +75,6 @@ ChatLingo-AddOn/
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── requirements.txt
 ├── ChatLingo/                       # WoW AddOn (скопіювати до WoW\Interface\AddOns\)
 │   ├── ChatLingo.toc
 │   ├── ChatLingo.lua
@@ -87,7 +86,7 @@ ChatLingo-AddOn/
 │   ├── GUI/
 │   │   ├── Config.lua
 │   │   └── ChatFrame.lua
-│   ├── Libs/
+│   ├── Libs/                       # Ace3 framework бібліотеки (включені для автономної роботи)
 │   ├── Locales/
 │   │   ├── enUS.lua
 │   │   └── ukUA.lua
@@ -120,6 +119,10 @@ ChatLingo-AddOn/
 ## 🤝 Внесок
 
 Внесок вітається! Перевірте GitHub issues для деталей.
+
+## 👨‍💻 Автор
+
+Groomsha (Ihor Cheberiak)
 
 ## 📝 Ліцензія
 
