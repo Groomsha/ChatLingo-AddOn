@@ -1,0 +1,25 @@
+# GUI Framework
+customtkinter==5.2.2
+
+# File Monitoring
+watchdog==3.0.0
+
+# Translation APIs
+deep-translator==1.11.4
+googletrans==4.0.0rc1
+
+# HTTP Requests
+requests==2.31.0
+certifi>=2023.7.22
+charset-normalizer>=3.2.0
+idna>=3.4
+urllib3>=2.0.4
+
+# Environment Variables
+python-decouple==3.8
+
+# Async Support
+aiofiles==23.2.1
+
+# Image Processing (for potential OCR features)
+Pillow>=10.0.0

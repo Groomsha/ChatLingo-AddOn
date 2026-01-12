@@ -72,8 +72,8 @@ Launch translator GUI to configure:
 ## 📁 Project Structure
 ```
 ChatLingo/
-├── Interface/AddOns/ChatLingo/    # WoW AddOn
-└── ChatLingoTranslator/            # Python translator
+├── Interface/AddOns/ChatLingo/     # WoW AddOn
+└── translator/                     # Python translator
     ├── lib/                        # All dependencies (included!)
     ├── modules/                    # Core logic
     ├── gui/                        # CustomTkinter interface
